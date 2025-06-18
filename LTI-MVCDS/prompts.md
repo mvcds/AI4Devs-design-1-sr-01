@@ -51,6 +51,8 @@ Output: a mermaid diagram with the information
 Input: the following mermaid diagrams
 ...
 
+---
+
 (image tool selected)
 
 # High level design
@@ -58,5 +60,17 @@ Input: the following mermaid diagrams
 Role: you're the software analyst of LTI, you know the system well and can provide a high level design
 
 Task: create a the high level diagram of the system
+
+---
+
+(image tool selected)
+
+# C4 diagram
+
+Role: You're the software analyst of LTI, you know the system well and can provide a high level design
+
+Task: create a C4 diagram for the system, going in depth into the collaboration component
+
+---
 
 (image tool selected)

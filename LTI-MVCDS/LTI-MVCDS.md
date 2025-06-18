@@ -522,3 +522,222 @@ Users ↔ Core Engine ↔ AI & Automation ↔ Integrations ↔ Reporting
 Everything is modular, API-driven, and designed for secure collaboration and data-driven recruitment.
 
 ![High Level Design](./high-level-design.png)
+
+# LTI - C4 Diagram
+
+Focusing on the Collaboration Service, which handles real-time collaboration features like threads, scorecards, presence, and notifications.
+
+## C1 - Context Diagram
+
+Shows who interacts with LTI and how it fits into the broader environment.
+
+![C1](./c1.png)
+
+```mermaid
+graph TD
+    Recruiter --> LTI["LTI]
+    HiringManager --> LTI
+    InterviewPanel --> LTI
+    Candidate --> LTI
+
+    LTI --> JobBoards["Job Boards & Social Platforms"]
+    LTI --> Calendar["Calendar Services"]
+    LTI --> HRIS["HRIS / Payroll System"]
+    LTI --> EmailSystem["Email / Messaging System"]
+```
+
+## C2 - Container Diagram
+
+Sshows how LTI is broken down into deployable, logical containers like web apps, services, databases, external integrations, and how they interact.
+
+![C2](./c2.png)
+
+```mermaid
+graph TD
+    subgraph Client Side
+        A1[Web/Mobile Client]
+    end
+
+    subgraph Backend
+        B1[API Gateway]
+        B2[Collaboration Service]
+        B3[Workflow Orchestrator]
+        B4[AI Engine]
+        B5[Notification Service]
+        B6[Integration Hub]
+        B7[Reporting & Analytics Service]
+        B8[Core Database]
+        B9[File Storage]
+    end
+
+    subgraph External Systems
+        E1[Job Boards & Social Platforms]
+        E2[Calendar Services]
+        E3[HRIS / Payroll System]
+        E4[Email / Messaging Providers]
+    end
+
+    %% Client to API
+    A1 --> B1
+
+    %% API Gateway routes to core services
+    B1 --> B2
+    B1 --> B3
+    B1 --> B4
+    B1 --> B5
+    B1 --> B6
+    B1 --> B7
+
+    %% Collaboration Service persists to DB
+    B2 --> B8
+
+    %% Workflow Orchestrator triggers Integration Hub
+    B3 --> B6
+
+    %% AI Engine may read/write DB
+    B4 --> B8
+
+    %% Reporting Service queries DB
+    B7 --> B8
+
+    %% Notification Service talks to Email/SMS
+    B5 --> E4
+
+    %% Integration Hub connects to externals
+    B6 --> E1
+    B6 --> E2
+    B6 --> E3
+
+    %% File Storage for resumes
+    B1 --> B9
+    B2 --> B9
+```
+
+## C3 - Component Diagram for Collaboration Service
+
+Shows how the internal components of the Collaboration Service handle real-time threads, scorecards, presence, and notifications.
+
+![C3](./c3.png)
+
+```mermaid
+graph TD
+    A1[Collab API] --> B1[Session Manager]
+    A1 --> B2[Comment Engine]
+    A1 --> B3[Scorecard Module]
+
+    B1 --> B4[Presence Service]
+    B2 --> C1[(Collaboration DB)]
+    B3 --> C1
+    B1 --> C2[(In-memory Store)]
+    B4 --> C2
+
+    B2 --> B5[Notification Adapter]
+    B3 --> B5
+
+    B2 --> B6[Audit Logger]
+    B3 --> B6
+    B6 --> C1
+    B5 --> D1[Notification Service]
+```
+
+## C4 - Code-Level Diagram
+
+Shows the key classes/modules, their responsibilities, and how they collaborate inside the Collaboration Service.
+
+![C4](./c4.png)
+
+```mermaid
+classDiagram
+
+    %% === Domain Layer ===
+    class Thread {
+        +UUID id
+        +UUID jobId
+        +UUID candidateId
+        +List~Comment~ comments
+    }
+
+    class Comment {
+        +UUID id
+        +UUID authorId
+        +String content
+        +DateTime createdAt
+    }
+
+    class Scorecard {
+        +UUID id
+        +UUID candidateId
+        +UUID evaluatorId
+        +Map~String, Int~ scores
+        +String notes
+    }
+
+    %% === Application Layer ===
+    class AddCommentUseCase {
+        +execute(threadId, commentData)
+    }
+
+    class UpdateScorecardUseCase {
+        +execute(scorecardId, updateData)
+    }
+
+    class GetThreadUseCase {
+        +execute(threadId)
+    }
+
+    %% === Interface Adapters ===
+    class CollabController {
+        +POST /threads/:id/comments
+        +WS /collab/:threadId
+    }
+
+    class CommentRepository {
+        +save(comment)
+        +findByThread(threadId)
+    }
+
+    class ScorecardRepository {
+        +save(scorecard)
+        +findByCandidate(candidateId)
+    }
+
+    class PresenceTracker {
+        +markOnline(userId, threadId)
+        +markOffline(userId, threadId)
+        +getOnlineUsers(threadId)
+    }
+
+    class NotificationPublisher {
+        +publish(event)
+    }
+
+    %% === Framework / Drivers ===
+    class PostgresAdapter
+    class RedisAdapter
+    class SocketIOServer
+
+    %% === Relationships ===
+    CollabController --> AddCommentUseCase
+    CollabController --> UpdateScorecardUseCase
+    CollabController --> GetThreadUseCase
+
+    AddCommentUseCase --> Thread
+    AddCommentUseCase --> CommentRepository
+    AddCommentUseCase --> NotificationPublisher
+
+    UpdateScorecardUseCase --> Scorecard
+    UpdateScorecardUseCase --> ScorecardRepository
+    UpdateScorecardUseCase --> NotificationPublisher
+
+    GetThreadUseCase --> Thread
+    GetThreadUseCase --> CommentRepository
+
+    CollabController --> PresenceTracker
+    PresenceTracker --> RedisAdapter
+
+    CommentRepository --> PostgresAdapter
+    ScorecardRepository --> PostgresAdapter
+
+    CollabController --> SocketIOServer
+
+```
