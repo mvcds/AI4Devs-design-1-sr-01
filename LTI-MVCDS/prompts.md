@@ -41,6 +41,8 @@ What are the top 3 use cases for LTI?
 
 Task: create me a mermaid diagram for the use case "<name of the use case>"
 
+(image tool selected)
+
 # Data model
 
 Task: we need to define the data model for LTI, please provide the entities, attributes (name and type), and relationships
@@ -49,4 +51,12 @@ Output: a mermaid diagram with the information
 Input: the following mermaid diagrams
 ...
 
+(image tool selected)
 
+# High level design
+
+Role: you're the software analyst of LTI, you know the system well and can provide a high level design
+
+Task: create a the high level diagram of the system
+
+(image tool selected)

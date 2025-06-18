@@ -514,3 +514,11 @@ erDiagram
 
     INTERVIEW ||--|| CANDIDATE : of
 ```
+
+# LTI - High Level Design
+
+Users ↔ Core Engine ↔ AI & Automation ↔ Integrations ↔ Reporting
+
+Everything is modular, API-driven, and designed for secure collaboration and data-driven recruitment.
+
+![High Level Design](./high-level-design.png)
