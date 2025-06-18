@@ -4,8 +4,6 @@
 
 **LTI** is an advanced Application Tracking System (ATS) designed to transform and streamline the entire recruitment lifecycle for modern organizations. Built with cutting-edge technology and an AI-first mindset, LTI empowers HR departments, recruiters, and hiring managers to work smarter, faster, and more collaboratively than ever before.
 
----
-
 ## Key Objectives
 
 - **Increase HR Department Efficiency:**  
@@ -20,8 +18,6 @@
 - **AI Assistance at Every Step:**  
   Leverage AI to match candidates to job descriptions, suggest top talent, predict hiring outcomes, and provide actionable insights for better hiring decisions.
 
----
-
 ## Aggregated Value
 
 **LTI** consolidates recruitment data, processes, and communication into a single intelligent platform. It delivers:
@@ -33,8 +29,6 @@
 - **Data-driven hiring decisions**
 
 This results in significant cost savings, a more agile HR function, and a competitive edge in talent acquisition.
-
----
 
 ## Competitive Advantages
 
@@ -56,12 +50,63 @@ Plug and play with existing HR tools, job boards, and communication channels.
 ✅ **Candidate-Centric Experience:**  
 Engage top talent with timely communication, branded portals, and mobile-friendly interfaces.
 
----
-
 ## Conclusion
 
 With **LTI**, organizations gain a future-ready ATS that not only manages applications but actively enhances every aspect of hiring. By combining automation, collaboration, and AI-driven intelligence, LTI positions companies to attract, engage, and hire the best talent faster and more effectively than the competition.
 
+**Let’s redefine recruitment efficiency together with LTI.**
+
 ---
 
-**Let’s redefine recruitment efficiency together with LTI.**
+# LTI - Main Functionalities
+
+## 1️⃣ Automated Job Posting
+
+- Publish open positions to multiple job boards and social media with a single click.
+- Use templates for quick job description creation.
+
+## 2️⃣ Smart Candidate Sourcing
+
+- Source candidates from integrated databases, job boards, and social channels.
+- Use AI to identify passive candidates who match open roles.
+
+## 3️⃣ AI-Powered Resume Screening
+
+- Automatically parse and rank resumes based on skills, experience, and job fit.
+- Highlight top candidates and flag missing qualifications.
+
+## 4️⃣ Collaborative Candidate Evaluation
+
+- Centralized dashboard for recruiters and managers to view candidate progress.
+- Shared notes, interview scorecards, and evaluation forms.
+- Real-time notifications and status updates.
+
+## 5️⃣ Automated Interview Scheduling
+
+- Sync with calendars to propose and book interview slots automatically.
+- Send confirmations and reminders to candidates and interviewers.
+
+## 6️⃣ Workflow Automation
+
+- Automate routine tasks like sending follow-up emails, rejection letters, or status updates.
+- Customizable pipelines for different job types or departments.
+
+## 7️⃣ AI-Assisted Recommendations
+
+- Suggest best-fit candidates for new roles based on hiring history and skill gaps.
+- Predict likelihood of hire and cultural fit.
+
+## 8️⃣ Advanced Reporting & Analytics
+
+- Track key metrics: time-to-fill, cost-per-hire, source effectiveness, diversity data.
+- Visual dashboards and exportable reports for management insights.
+
+## 9️⃣ Candidate Relationship Management (CRM)
+
+- Build and nurture talent pools for future openings.
+- Engage passive candidates with automated campaigns and personalized communication.
+
+## 🔟 Integration & Security
+
+- Integrate seamlessly with HRIS, payroll, and communication tools.
+- Ensure data privacy and compliance with GDPR and other standards.

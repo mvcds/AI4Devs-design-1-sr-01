@@ -18,3 +18,7 @@ Task: decribe such sofware briefly, its aggregated value and competitive advanta
 Output: a markdown file with the task result
 
 Feel free to ask for more information, examples, or clarifications if needed.
+
+# Asking for functionalities
+
+Task: describe the main functionalities
