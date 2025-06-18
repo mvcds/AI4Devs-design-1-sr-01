@@ -22,3 +22,9 @@ Feel free to ask for more information, examples, or clarifications if needed.
 # Asking for functionalities
 
 Task: describe the main functionalities
+
+# Drawing the lean canvas
+
+Task: give me the content of a lean canvas in a textual format and also draw it
+
+(image tool selected)

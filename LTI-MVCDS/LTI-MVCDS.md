@@ -110,3 +110,76 @@ With **LTI**, organizations gain a future-ready ATS that not only manages applic
 
 - Integrate seamlessly with HRIS, payroll, and communication tools.
 - Ensure data privacy and compliance with GDPR and other standards.
+
+---
+
+# LTI - Lean Canvas
+
+![LTI Lean Canvas](./lean-canvas.png)
+
+## Problem
+
+- Repetitive job posting
+- Difficulty finding qualified candidates
+- Time-consuming resume screening
+- Lack of coordination in candidate evaluations
+
+## Customer Segments
+
+- Human Resources departments
+- Recruiters
+- Hiring Managers
+
+## Unique Value Proposition
+
+A next-generation ATS that boosts recruitment efficiency through **automation**, **AI**, and **real-time collaboration**.
+
+## Solution
+
+- Automated job posting
+- AI-powered candidate sourcing
+- AI-driven resume screening
+- Automated scheduling and follow-ups
+- Collaborative evaluation tools
+
+## Channels
+
+- Direct sales
+- HR technology partnerships
+- Online marketing and product demos
+
+## Revenue Streams
+
+- Subscription fees (SaaS)
+- Tiered pricing plans
+- Add-ons for advanced AI modules
+
+## Cost Structure
+
+- Platform development and maintenance
+- AI model training and data updates
+- Customer support and onboarding
+- Marketing and sales expenses
+
+## Key Metrics
+
+- Time-to-hire
+- Quality of hire
+- Candidate pipeline growth
+- Diversity of hires
+- User engagement
+
+## Key Activities
+
+- Sourcing and attracting candidates
+- Screening and evaluating applications
+- Scheduling and conducting interviews
+- Automating communication and feedback
+- Generating analytics and reports
+
+## Customer Relationships
+
+- Training and onboarding
+- Dedicated support
+- Community engagement
+- Continuous product updates
