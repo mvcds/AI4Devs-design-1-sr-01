@@ -28,3 +28,15 @@ Task: describe the main functionalities
 Task: give me the content of a lean canvas in a textual format and also draw it
 
 (image tool selected)
+
+# Use cases
+
+Task: tell me about the main use cases that exist for this system
+
+---
+
+What are the top 3 use cases for LTI?
+
+---
+
+Task: create me a mermaid diagram for the use case "<name of the use case>"

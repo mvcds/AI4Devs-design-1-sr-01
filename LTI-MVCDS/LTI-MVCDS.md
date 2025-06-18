@@ -183,3 +183,151 @@ A next-generation ATS that boosts recruitment efficiency through **automation**,
 - Dedicated support
 - Community engagement
 - Continuous product updates
+
+---
+
+# 🎯 LTI — Top 3 Main Use Cases
+
+---
+
+## 1️⃣ AI-Powered Resume Screening & Matching
+
+![AI-Powered Resume Screening & Matching](./uc-1.png)
+
+```mermaid
+graph TD
+    Recruiter((Recruiter))
+    HR((HR Coordinator))
+    TLI((TLI))
+    UC1[Send Resume]
+    UC2[Rank Candidates]
+    UC3[Shortlist Candidates]
+    UC4[Flag/Highlight Candidate]
+
+    Recruiter --> UC1 --> TLI
+    TLI --> UC2 --> UC3 --> UC4 --> HR
+```
+
+**Who uses it:**
+
+- Recruiters
+- HR Coordinators
+
+**What happens:**
+
+- LTI automatically parses incoming resumes.
+- The AI ranks and shortlists candidates based on job requirements, skills, and experience.
+- Best-fit candidates are flagged; mismatches are highlighted for easy filtering.
+
+**Value:**
+
+- Significantly reduces manual screening time.
+- Ensures higher quality shortlists.
+- Handles large application volumes with speed and accuracy.
+
+## 2️⃣ Collaborative Candidate Evaluation
+
+![Collaborative Candidate Evaluation](./uc-2.png)
+
+```mermaid
+graph TD
+    Recruiter((Recruiter))
+    HiringManager((Hiring Manager))
+    InterviewPanel((Interview Panel))
+    LTI((LTI))
+
+    UC1[Upload Candidate Profile & Notes]
+    UC2[Review Profile & Add Comments]
+    UC3[Conduct Interview & Submit Scorecards]
+    UC4[Share Real-Time Dashboard & Status Updates]
+    UC5[Make Decision / Request More Info]
+    UC6[Finalize Candidate Status Update]
+    UC7[Notify Stakeholders & Store Decision]
+
+    Recruiter --> UC1 --> LTI
+    HiringManager --> UC2 --> LTI
+    InterviewPanel --> UC3 --> LTI
+
+    LTI --> UC4
+    HiringManager --> UC5 --> LTI
+    Recruiter --> UC6 --> LTI
+    LTI --> UC7
+
+    UC4 --> HiringManager
+    UC4 --> Recruiter
+    UC4 --> InterviewPanel
+    UC7 --> Recruiter
+    UC7 --> HiringManager
+    UC7 --> InterviewPanel
+```
+
+**Who uses it:**
+
+- Recruiters
+- Hiring Managers
+- Interview Panels
+
+**What happens:**
+
+- All evaluators share candidate notes, interview scorecards, and feedback in a single, real-time dashboard.
+- Stakeholders receive live status updates on candidate progress.
+- Decisions and approvals happen faster with shared context.
+
+**Value:**
+
+- Speeds up hiring decisions.
+- Improves alignment and reduces miscommunication.
+- Creates a fair, structured, and consistent evaluation process.
+
+## 3️⃣ Automated Interview Scheduling
+
+![Automated Interview Scheduling](./uc-3.png)
+
+```mermaid
+graph TD
+    Recruiter((Recruiter))
+    Candidate((Candidate))
+    HiringManager((Hiring Manager))
+    LTI((LTI))
+
+    UC1[Sync Interviewers' Calendars]
+    UC2[Show Available Time Slots]
+    UC3[Select Preferred Slot]
+    UC4[Confirm or Reschedule]
+    UC5[Send Reminders to All Parties]
+
+    Recruiter --> UC1 --> LTI
+    HiringManager --> UC1 --> LTI
+
+    Candidate --> UC2 --> LTI
+    Candidate --> UC3 --> LTI
+
+    LTI --> UC4
+    Candidate --> UC4 --> LTI
+
+    LTI --> UC5
+
+    UC5 --> Recruiter
+    UC5 --> HiringManager
+    UC5 --> Candidate
+```
+
+**Who uses it:**
+
+- Recruiters
+- Candidates
+- Hiring Managers
+
+**What happens:**
+
+- LTI syncs with interviewers’ calendars.
+- Candidates choose from available time slots.
+- The system confirms, reschedules if needed, and sends automatic reminders to all parties.
+
+**Value:**
+
+- Eliminates manual scheduling back-and-forth.
+- Reduces interview no-shows and conflicts.
+- Enhances candidate experience with smooth, timely communication.
+
+---
