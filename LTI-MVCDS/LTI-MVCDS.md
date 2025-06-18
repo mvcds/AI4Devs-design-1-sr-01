@@ -331,3 +331,186 @@ graph TD
 - Enhances candidate experience with smooth, timely communication.
 
 ---
+
+# LTI Data Model - Entities and Attributes (Tables)
+
+![Data Model Diagram](./data-model.png)
+
+## User
+
+| Attribute | Type                                                                         | Description       |
+| --------- | ---------------------------------------------------------------------------- | ----------------- |
+| `user_id` | UUID                                                                         | Unique identifier |
+| `name`    | String                                                                       | Full name         |
+| `email`   | String                                                                       | Email address     |
+| `role`    | Enum (Recruiter, HR Coordinator, Hiring Manager, Interview Panel, Candidate) | User role         |
+| `phone`   | String                                                                       | Phone number      |
+| `status`  | Enum (Active, Inactive)                                                      | Current status    |
+
+## Candidate
+
+| Attribute        | Type                                                                | Description                |
+| ---------------- | ------------------------------------------------------------------- | -------------------------- |
+| `candidate_id`   | UUID                                                                | Unique identifier          |
+| `name`           | String                                                              | Full name                  |
+| `email`          | String                                                              | Email address              |
+| `phone`          | String                                                              | Phone number               |
+| `resume`         | File                                                                | Uploaded resume            |
+| `status`         | Enum (Applied, Shortlisted, Interviewing, Offered, Hired, Rejected) | Application stage          |
+| `profile_notes`  | Text                                                                | Recruiter/manager notes    |
+| `rank`           | Integer                                                             | Candidate ranking          |
+| `highlight_flag` | Boolean                                                             | Flag for special attention |
+
+## Job
+
+| Attribute     | Type                         | Description        |
+| ------------- | ---------------------------- | ------------------ |
+| `job_id`      | UUID                         | Unique identifier  |
+| `title`       | String                       | Job title          |
+| `department`  | String                       | Department name    |
+| `location`    | String                       | Job location       |
+| `description` | Text                         | Job description    |
+| `status`      | Enum (Open, Closed, On Hold) | Current job status |
+| `created_by`  | FK (User)                    | Creator            |
+
+## Interview
+
+| Attribute        | Type                                                | Description         |
+| ---------------- | --------------------------------------------------- | ------------------- |
+| `interview_id`   | UUID                                                | Unique identifier   |
+| `candidate_id`   | FK (Candidate)                                      | Related candidate   |
+| `job_id`         | FK (Job)                                            | Related job         |
+| `panel_id`       | FK (Interview Panel)                                | Assigned panel      |
+| `scheduled_time` | DateTime                                            | Scheduled time      |
+| `status`         | Enum (Scheduled, Rescheduled, Completed, Cancelled) | Status              |
+| `scorecard`      | JSON                                                | Feedback and scores |
+
+## Interview Panel
+
+| Attribute  | Type        | Description       |
+| ---------- | ----------- | ----------------- |
+| `panel_id` | UUID        | Unique identifier |
+| `members`  | [FK (User)] | Panel members     |
+| `comments` | Text        | Panel comments    |
+
+## Calendar
+
+| Attribute      | Type      | Description       |
+| -------------- | --------- | ----------------- |
+| `calendar_id`  | UUID      | Unique identifier |
+| `user_id`      | FK (User) | Owner             |
+| `availability` | JSON      | Available slots   |
+| `synced`       | Boolean   | Sync status       |
+
+## Notification
+
+| Attribute         | Type                       | Description          |
+| ----------------- | -------------------------- | -------------------- |
+| `notification_id` | UUID                       | Unique identifier    |
+| `recipient_id`    | FK (User)                  | Recipient            |
+| `message`         | Text                       | Notification content |
+| `status`          | Enum (Sent, Read, Pending) | Delivery status      |
+| `created_at`      | DateTime                   | Creation timestamp   |
+
+## Collaboration (Thread)
+
+| Attribute      | Type           | Description         |
+| -------------- | -------------- | ------------------- |
+| `collab_id`    | UUID           | Unique identifier   |
+| `candidate_id` | FK (Candidate) | Related candidate   |
+| `job_id`       | FK (Job)       | Related job         |
+| `comments`     | Text           | Collaboration notes |
+| `shared_with`  | [FK (User)]    | Shared with users   |
+| `created_at`   | DateTime       | Timestamp           |
+
+```mermaid
+erDiagram
+
+    USER {
+        UUID user_id
+        STRING name
+        STRING email
+        ENUM role
+        STRING phone
+        ENUM status
+    }
+
+    CANDIDATE {
+        UUID candidate_id
+        STRING name
+        STRING email
+        STRING phone
+        FILE resume
+        ENUM status
+        TEXT profile_notes
+        INT rank
+        BOOLEAN highlight_flag
+    }
+
+    JOB {
+        UUID job_id
+        STRING title
+        STRING department
+        STRING location
+        TEXT description
+        ENUM status
+    }
+
+    INTERVIEW {
+        UUID interview_id
+        UUID candidate_id
+        UUID job_id
+        UUID panel_id
+        DATETIME scheduled_time
+        ENUM status
+        JSON scorecard
+    }
+
+    PANEL {
+        UUID panel_id
+        TEXT comments
+    }
+
+    CALENDAR {
+        UUID calendar_id
+        UUID user_id
+        JSON availability
+        BOOLEAN synced
+    }
+
+    NOTIFICATION {
+        UUID notification_id
+        UUID recipient_id
+        TEXT message
+        ENUM status
+        DATETIME created_at
+    }
+
+    COLLABORATION {
+        UUID collab_id
+        UUID candidate_id
+        UUID job_id
+        TEXT comments
+        DATETIME created_at
+    }
+
+    USER ||--o{ JOB : creates
+    USER ||--o{ CALENDAR : owns
+    USER ||--o{ NOTIFICATION : receives
+    USER ||--o{ PANEL : member_of
+    USER ||--o{ COLLABORATION : participates
+
+    CANDIDATE ||--o{ INTERVIEW : attends
+    CANDIDATE ||--o{ COLLABORATION : discussed_in
+
+    JOB ||--o{ INTERVIEW : requires
+    JOB ||--o{ COLLABORATION : discussed_in
+
+    PANEL ||--o{ INTERVIEW : conducts
+
+    INTERVIEW ||--|| PANEL : assigned_to
+
+    INTERVIEW ||--|| JOB : for
+
+    INTERVIEW ||--|| CANDIDATE : of
+```
